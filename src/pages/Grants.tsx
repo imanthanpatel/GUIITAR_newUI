@@ -1,10 +1,17 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Calendar, DollarSign, Users, ArrowRight, CheckCircle, Clock } from 'lucide-react';
 
 const Grants = () => {
   const [selectedGrant, setSelectedGrant] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  const handleApplyNow = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent grant expansion
+    navigate('/signin');
+  };
 
   const grants = [
     {
@@ -149,7 +156,10 @@ const Grants = () => {
                   </p>
 
                   {/* Apply Now Button with Glow */}
-                  <button className="w-full btn-primary group relative overflow-hidden">
+                  <button 
+                    className="w-full btn-primary group relative overflow-hidden"
+                    onClick={handleApplyNow}
+                  >
                     <span className="relative z-10 flex items-center justify-center space-x-2">
                       <span>Apply Now</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
