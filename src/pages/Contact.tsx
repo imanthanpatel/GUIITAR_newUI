@@ -137,9 +137,10 @@ const Contact = () => {
       </section>
 
       <div className="max-w-7xl mx-auto px-6 pb-20">
-        {/* Chat Interface */}
-        <div className="mb-12">
-          <div className="max-w-3xl mx-auto">
+        {/* Chat Interface and Contact Info Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+          {/* Chat Interface */}
+          <div>
             <div className="glass rounded-2xl p-6 h-96 flex flex-col">
               <div className="flex items-center space-x-3 mb-6 pb-4 border-b border-border/30">
                 <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center">
@@ -224,44 +225,6 @@ const Contact = () => {
               </div>
             </div>
           </div>
-        </div>
-        
-        {/* Map and Contact Info Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Map Section */}
-          <div>
-            <div className="glass rounded-2xl overflow-hidden">
-              {showTokenInput ? (
-                <div className="p-8 text-center">
-                  <h3 className="text-xl font-bold mb-4">Interactive Map</h3>
-                  <p className="text-muted-foreground mb-6">
-                    To view our location on the map, please enter your Mapbox public token.
-                    Get yours at <a href="https://mapbox.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">mapbox.com</a>
-                  </p>
-                  <div className="space-y-4">
-                    <input
-                      type="text"
-                      value={mapboxToken}
-                      onChange={(e) => setMapboxToken(e.target.value)}
-                      placeholder="Enter your Mapbox public token..."
-                      className="w-full glass-subtle rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                    />
-                    <button
-                      onClick={initializeMap}
-                      className="btn-primary w-full"
-                    >
-                      Load Map
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="relative">
-                  <div ref={mapContainer} className="h-96 w-full" />
-                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-background/20 rounded-b-2xl"></div>
-                </div>
-              )}
-            </div>
-          </div>
 
           {/* Contact Info */}
           <div className="space-y-4">
@@ -296,6 +259,41 @@ const Contact = () => {
                 <p className="text-sm text-muted-foreground">Mon-Fri: 9 AM - 6 PM IST</p>
               </div>
             </div>
+          </div>
+        </div>
+        
+        {/* Map Section */}
+        <div className="max-w-3xl mx-auto">
+          <div className="glass rounded-2xl overflow-hidden">
+            {showTokenInput ? (
+              <div className="p-8 text-center">
+                <h3 className="text-xl font-bold mb-4">Interactive Map</h3>
+                <p className="text-muted-foreground mb-6">
+                  To view our location on the map, please enter your Mapbox public token.
+                  Get yours at <a href="https://mapbox.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">mapbox.com</a>
+                </p>
+                <div className="space-y-4">
+                  <input
+                    type="text"
+                    value={mapboxToken}
+                    onChange={(e) => setMapboxToken(e.target.value)}
+                    placeholder="Enter your Mapbox public token..."
+                    className="w-full glass-subtle rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  />
+                  <button
+                    onClick={initializeMap}
+                    className="btn-primary w-full"
+                  >
+                    Load Map
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="relative">
+                <div ref={mapContainer} className="h-96 w-full" />
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-background/20 rounded-b-2xl"></div>
+              </div>
+            )}
           </div>
         </div>
       </div>
