@@ -241,8 +241,7 @@ const Grants = () => {
               {
                 id: 1,
                 name: "EcoTech Solutions",
-                student: "Arjun Sharma",
-                photo: "/api/placeholder/300/300",
+                color: "bg-green-600", // Green for environmental focus
                 description: "Revolutionary biodegradable packaging made from agricultural waste. Secured contracts with 50+ restaurants.",
                 funding: "₹12 Lakhs",
                 status: "Active",
@@ -251,8 +250,7 @@ const Grants = () => {
               {
                 id: 2,
                 name: "MedAssist AI",
-                student: "Priya Patel",
-                photo: "/api/placeholder/300/300",
+                color: "bg-blue-600", // Blue for healthcare
                 description: "AI-powered diagnostic tool for early disease detection. Currently used in 25+ clinics.",
                 funding: "₹18 Lakhs",
                 status: "Series A",
@@ -261,8 +259,7 @@ const Grants = () => {
               {
                 id: 3,
                 name: "EduVerse",
-                student: "Rohit Kumar",
-                photo: "/api/placeholder/300/300",
+                color: "bg-purple-600", // Purple for education
                 description: "Virtual reality platform for immersive learning experiences. 10,000+ active students.",
                 funding: "₹15 Lakhs",
                 status: "Growing",
@@ -271,8 +268,7 @@ const Grants = () => {
               {
                 id: 4,
                 name: "AgriBot",
-                student: "Sneha Reddy",
-                photo: "/api/placeholder/300/300",
+                color: "bg-lime-600", // Lime for agriculture
                 description: "Autonomous farming robots for precision agriculture. Deployed across 200+ farms.",
                 funding: "₹22 Lakhs",
                 status: "Scaling",
@@ -281,8 +277,7 @@ const Grants = () => {
               {
                 id: 5,
                 name: "FinSecure",
-                student: "Vikash Singh",
-                photo: "/api/placeholder/300/300",
+                color: "bg-cyan-600", // Cyan for fintech
                 description: "Blockchain-based secure payment gateway for small businesses. 500+ merchants onboarded.",
                 funding: "₹20 Lakhs",
                 status: "Profitable",
@@ -291,8 +286,7 @@ const Grants = () => {
               {
                 id: 6,
                 name: "CleanWater Tech",
-                student: "Ananya Joshi",
-                photo: "/api/placeholder/300/300",
+                color: "bg-teal-600", // Teal for water purification
                 description: "IoT-enabled water purification systems for rural areas. Installed in 100+ villages.",
                 funding: "₹16 Lakhs",
                 status: "Impact Stage",
@@ -306,17 +300,11 @@ const Grants = () => {
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                {/* Student Photo */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={project.photo}
-                    alt={project.student}
-                    className="w-full h-full object-cover"
-                  />
+                {/* Project Name Header */}
+                <div className={`relative h-48 overflow-hidden ${project.color}`}>
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                   <div className="absolute bottom-4 left-4">
-                    <h4 className="text-lg font-bold text-white">{project.student}</h4>
-                    <p className="text-white/80 text-sm">{project.name}</p>
+                    <h4 className="text-lg font-bold text-white">{project.name}</h4>
                   </div>
                 </div>
 

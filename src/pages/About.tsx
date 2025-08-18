@@ -380,6 +380,33 @@ const About = () => {
         </div>
       </section>
 
+      {/* Our Mission */}
+      <section className="py-20 px-6 bg-surface/30">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-8">Our <span className="text-primary">Mission</span></h2>
+          <div className="glass p-8 rounded-2xl">
+            <p className="text-lg leading-relaxed text-muted-foreground">
+              To produce success stories in innovations and start-ups that will make the young minds confident, 
+              freestanding and financially viable.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Vision */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-8">Our <span className="text-accent">Vision</span></h2>
+          <div className="glass p-8 rounded-2xl border-l-4 border-accent">
+            <p className="text-lg leading-relaxed text-muted-foreground">
+              To nurture young minds by providing platform to explore and showcase their potential along with 
+              generation of high added value with a focus on innovation as well as marketing of technologies 
+              for the betterment of Scientific, Engineering, Science & Management Communities and the Society.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Mission Timeline */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">

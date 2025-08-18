@@ -1,66 +1,58 @@
 import { useState, useEffect } from 'react';
-import { Calendar, DollarSign, Users, Zap, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Zap, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import Autoplay from 'embla-carousel-autoplay';
 import gallery1 from '@/assets/gallery-1.jpg';
 import gallery2 from '@/assets/gallery-2.jpg';
 import gallery3 from '@/assets/gallery-3.jpg';
 import gallery4 from '@/assets/gallery-4.jpg';
 import gallery5 from '@/assets/gallery-5.jpg';
+import signin from '@/pages/SignIn';
 
 const GrantsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredGrant, setHoveredGrant] = useState<number | null>(null);
-  
+  const [hoveredGrant, setHoveredGrant] = useState<number | null>(null); // Explicit type for hoveredGrant
+  const navigate = useNavigate(); // Initialize navigate hook
+
+  const handleApplyNow = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent grant expansion
+    navigate('/signin');
+  };
+
   const galleryImages = [
-    { src: gallery1, alt: "Modern tech startup office with diverse team collaboration", name: "Innovation Summit 2024" },
-    { src: gallery2, alt: "Innovation lab with cutting-edge technology", name: "Tech Demo Day" },
-    { src: gallery3, alt: "Entrepreneurs presenting at pitch event", name: "Startup Pitch Competition" },
-    { src: gallery4, alt: "Young entrepreneurs in creative coworking space", name: "Founders Networking Event" },
-    { src: gallery5, alt: "Award ceremony with startup founders", name: "Excellence Awards Ceremony" }
+    { src: gallery1, alt: 'Modern tech startup office with diverse team collaboration', name: 'Innovation Summit 2024' },
+    { src: gallery2, alt: 'Innovation lab with cutting-edge technology', name: 'Tech Demo Day' },
+    { src: gallery3, alt: 'Entrepreneurs presenting at pitch event', name: 'Startup Pitch Competition' },
+    { src: gallery4, alt: 'Young entrepreneurs in creative coworking space', name: 'Founders Networking Event' },
+    { src: gallery5, alt: 'Award ceremony with startup founders', name: 'Excellence Awards Ceremony' },
   ];
 
   const grants = [
     {
-      title: "Ignition Grant",
-      amount: "$25K",
-      deadline: "Rolling",
-      eligibility: "Early Stage",
-      description: "Fuel your startup's first spark into a blazing innovation",
-      color: "primary",
+      title: 'Nodal Grant',
+      amount: '30Lac',
+      description: 'Fuel your startup’s first spark into a blazing innovation',
+      color: 'primary',
       applicants: 847,
-      success: "12%"
+      success: '12%',
     },
     {
-      title: "Acceleration Fund",
-      amount: "$100K",
-      deadline: "Mar 2025",
-      eligibility: "Growth Stage",
-      description: "Scale your proven concept into market dominance",
-      color: "accent",
+      title: 'Ipr Grant',
+      amount: '5Lac',
+      description: 'Scale your proven concept into market dominance',
+      color: 'accent',
       applicants: 342,
-      success: "8%"
+      success: '8%',
     },
     {
-      title: "Moonshot Initiative",
-      amount: "$500K",
-      deadline: "Jun 2025",
-      eligibility: "Deep Tech",
-      description: "Revolutionary breakthroughs that reshape entire industries",
-      color: "primary",
+      title: 'SSIP Grant',
+      amount: '2.5Lac',
+      description: 'Revolutionary breakthroughs that reshape entire industries',
+      color: 'primary',
       applicants: 123,
-      success: "3%"
+      success: '3%',
     },
-    {
-      title: "Social Impact Grant",
-      amount: "$75K",
-      deadline: "May 2025",
-      eligibility: "Social Good",
-      description: "Innovation that creates positive change for humanity",
-      color: "accent",
-      applicants: 567,
-      success: "15%"
-    }
   ];
 
   useEffect(() => {
@@ -83,25 +75,23 @@ const GrantsSection = () => {
     <section id="grants" className="py-12 lg:py-16 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 aurora-bg opacity-20" />
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         {/* Gallery Section */}
-        <div className={`text-center mb-16 lg:mb-20 transform transition-all duration-1000 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-        }`}>
+        <div
+          className={`text-center mb-16 lg:mb-20 transform transition-all duration-1000 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+          }`}
+        >
           <h2 className="text-4xl lg:text-5xl font-bold font-space mb-8">
             Check Our <span className="text-accent">Gallery</span>
           </h2>
-          
+
           <div className="relative max-w-5xl mx-auto">
-            <Carousel 
-              className="w-full" 
-              opts={{ align: "start", loop: true }}
-              plugins={[
-                Autoplay({
-                  delay: 3000,
-                })
-              ]}
+            <Carousel
+              className="w-full"
+              opts={{ align: 'start', loop: true }}
+              plugins={[Autoplay({ delay: 3000 })]}
             >
               <CarouselContent className="-ml-2 md:-ml-4">
                 {galleryImages.map((image, index) => (
@@ -120,22 +110,30 @@ const GrantsSection = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="glass border-accent/20 text-accent hover:bg-accent hover:text-accent-foreground" />
-              <CarouselNext className="glass border-accent/20 text-accent hover:bg-accent hover:text-accent-foreground" />
+              <CarouselPrevious
+                aria-label="Previous slide"
+                className="glass border-accent/20 text-accent hover:bg-accent hover:text-accent-foreground"
+              />
+              <CarouselNext
+                aria-label="Next slide"
+                className="glass border-accent/20 text-accent hover:bg-accent hover:text-accent-foreground"
+              />
             </Carousel>
           </div>
         </div>
 
         {/* Section Header */}
-        <div className={`text-center mb-16 lg:mb-24 transform transition-all duration-1000 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-        }`}>
+        <div
+          className={`text-center mb-16 lg:mb-24 transform transition-all duration-1000 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+          }`}
+        >
           <h2 className="text-hero mb-6">
             <span className="text-accent">Grants</span> That Change Lives
           </h2>
           <p className="text-subtitle max-w-3xl mx-auto">
-            Not just funding—we're offering you the keys to transformation. 
-            Each grant is a gateway to turning impossible into inevitable.
+            Not just funding—we’re offering you the keys to transformation. Each grant is a gateway to turning impossible
+            into inevitable.
           </p>
         </div>
 
@@ -147,101 +145,95 @@ const GrantsSection = () => {
               className={`group relative transform transition-all duration-700 hover-lift ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
               }`}
-              style={{ 
+              style={{
                 transitionDelay: `${index * 150}ms`,
-                transform: `rotate(${index % 2 === 0 ? '1deg' : '-1deg'}) ${isVisible ? 'translateY(0)' : 'translateY(20px)'}`
+                transform: `rotate(${index % 2 === 0 ? '1deg' : '-1deg'}) ${isVisible ? 'translateY(0)' : 'translateY(20px)'}`,
               }}
               onMouseEnter={() => setHoveredGrant(index)}
               onMouseLeave={() => setHoveredGrant(null)}
             >
               {/* Main Grant Card */}
-              <div className={`glass rounded-3xl p-8 lg:p-10 relative overflow-hidden ${
-                hoveredGrant === index ? 'scale-105' : ''
-              } smooth-transition`}>
-                
+              <div
+                className={`glass rounded-3xl p-8 lg:p-10 relative overflow-hidden ${
+                  hoveredGrant === index ? 'scale-105' : ''
+                } smooth-transition`}
+              >
                 {/* Floating Amount Badge */}
-                <div className={`absolute -top-3 -right-3 w-20 h-20 rounded-full flex items-center justify-center font-bold text-sm ${
-                  grant.color === 'primary' ? 'bg-primary text-primary-foreground glow-primary' : 'bg-accent text-accent-foreground glow-accent'
-                } float-gentle`}>
+                <div
+                  className={`absolute -top-3 -right-3 w-20 h-20 rounded-full flex items-center justify-center font-bold text-sm ${
+                    grant.color === 'primary' ? 'bg-primary text-primary-foreground glow-primary' : 'bg-accent text-accent-foreground glow-accent'
+                  } float-gentle`}
+                >
                   {grant.amount}
                 </div>
 
                 {/* Header */}
                 <div className="mb-6">
-                  <h3 className="text-2xl lg:text-3xl font-bold font-space mb-2">
-                    {grant.title}
-                  </h3>
-                  <div className="flex items-center space-x-4 text-muted-foreground">
-                    <div className="flex items-center space-x-1">
-                      <Calendar className="w-4 h-4" />
-                      <span className="text-sm">{grant.deadline}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Users className="w-4 h-4" />
-                      <span className="text-sm">{grant.eligibility}</span>
-                    </div>
-                  </div>
+                  <h3 className="text-2xl lg:text-3xl font-bold font-space mb-2">{grant.title}</h3>
                 </div>
 
                 {/* Description */}
-                <p className="text-muted-foreground leading-relaxed mb-8">
-                  {grant.description}
-                </p>
+                <p className="text-muted-foreground leading-relaxed mb-8">{grant.description}</p>
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-4 mb-8">
                   <div className="glass-subtle rounded-xl p-4">
-                    <div className="text-2xl font-bold text-foreground">
-                      {grant.applicants}
-                    </div>
+                    <div className="text-2xl font-bold text-foreground">{grant.applicants}</div>
                     <div className="text-sm text-muted-foreground">Applicants</div>
                   </div>
                   <div className="glass-subtle rounded-xl p-4">
-                    <div className="text-2xl font-bold text-foreground">
-                      {grant.success}
-                    </div>
+                    <div className="text-2xl font-bold text-foreground">{grant.success}</div>
                     <div className="text-sm text-muted-foreground">Success Rate</div>
                   </div>
                 </div>
 
                 {/* Apply Button */}
-                <button className={`w-full group/btn flex items-center justify-center space-x-2 py-4 px-6 rounded-xl font-semibold smooth-transition ${
-                  grant.color === 'primary' 
-                    ? 'btn-primary' 
-                    : 'btn-accent'
-                }`}>
+                <button
+                  onClick={handleApplyNow}
+                  className={`w-full group/btn flex items-center justify-center space-x-2 py-4 px-6 rounded-xl font-semibold smooth-transition ${
+                    grant.color === 'primary' ? 'btn-primary' : 'btn-accent'
+                  }`}
+                  aria-label={`Apply for ${grant.title}`}
+                >
                   <span>Apply Now</span>
                   <ArrowUpRight className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                 </button>
 
                 {/* Hover Glow Effect */}
-                <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${
-                  grant.color === 'primary' ? 'bg-primary' : 'bg-accent'
-                }`} />
+                <div
+                  className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${
+                    grant.color === 'primary' ? 'bg-primary' : 'bg-accent'
+                  }`}
+                />
               </div>
 
               {/* Floating Decorative Elements */}
-              <div className={`absolute -bottom-2 -left-2 w-6 h-6 rounded-full ${
-                grant.color === 'primary' ? 'bg-accent' : 'bg-primary'
-              } opacity-60 group-hover:scale-150 transition-transform duration-500 float-gentle`} 
-              style={{ animationDelay: '2s' }} />
-              
-              <div className={`absolute -top-1 left-1/3 w-4 h-4 rounded-full ${
-                grant.color === 'primary' ? 'bg-accent' : 'bg-primary'
-              } opacity-40 group-hover:scale-125 transition-transform duration-500 float-gentle`}
-              style={{ animationDelay: '4s' }} />
+              <div
+                className={`absolute -bottom-2 -left-2 w-6 h-6 rounded-full ${
+                  grant.color === 'primary' ? 'bg-accent' : 'bg-primary'
+                } opacity-60 group-hover:scale-150 transition-transform duration-500 float-gentle`}
+                style={{ animationDelay: '2s' }}
+              />
+              <div
+                className={`absolute -top-1 left-1/3 w-4 h-4 rounded-full ${
+                  grant.color === 'primary' ? 'bg-accent' : 'bg-primary'
+                } opacity-40 group-hover:scale-125 transition-transform duration-500 float-gentle`}
+                style={{ animationDelay: '4s' }}
+              />
             </div>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className={`text-center mt-16 lg:mt-24 transform transition-all duration-1000 delay-500 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-        }`}>
-          <button className="btn-ghost group flex items-center space-x-3 mx-auto">
+        <div
+          className={`text-center mt-16 lg:mt-24 transform transition-all duration-1000 delay-500 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+          }`}
+        >
+          <Link to="/grants" className="btn-ghost group flex items-center space-x-3 mx-auto">
             <span>View All Grant Programs</span>
             <Zap className="w-5 h-5 group-hover:text-accent transition-colors" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>
