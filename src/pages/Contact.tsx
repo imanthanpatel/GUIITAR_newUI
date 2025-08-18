@@ -137,10 +137,9 @@ const Contact = () => {
       </section>
 
       <div className="max-w-7xl mx-auto px-6 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          
-          {/* Chat Interface */}
-          <div className="order-2 lg:order-1">
+        {/* Chat Interface */}
+        <div className="mb-12">
+          <div className="max-w-3xl mx-auto">
             <div className="glass rounded-2xl p-6 h-96 flex flex-col">
               <div className="flex items-center space-x-3 mb-6 pb-4 border-b border-border/30">
                 <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center">
@@ -225,9 +224,12 @@ const Contact = () => {
               </div>
             </div>
           </div>
-
+        </div>
+        
+        {/* Map and Contact Info Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Map Section */}
-          <div className="order-1 lg:order-2">
+          <div>
             <div className="glass rounded-2xl overflow-hidden">
               {showTokenInput ? (
                 <div className="p-8 text-center">
@@ -259,39 +261,39 @@ const Contact = () => {
                 </div>
               )}
             </div>
+          </div>
 
-            {/* Contact Info */}
-            <div className="mt-8 space-y-4">
-              <div className="glass-subtle rounded-lg p-4 flex items-center space-x-4">
-                <MapPin className="w-5 h-5 text-primary" />
-                <div>
-                  <p className="font-medium">Visit us</p>
-                  <p className="text-sm text-muted-foreground">GSFC University Campus, Vadodara, Gujarat</p>
-                </div>
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <div className="glass-subtle rounded-lg p-4 flex items-center space-x-4">
+              <MapPin className="w-5 h-5 text-primary" />
+              <div>
+                <p className="font-medium">Visit us</p>
+                <p className="text-sm text-muted-foreground">GSFC University Campus, Vadodara, Gujarat</p>
               </div>
+            </div>
 
-              <div className="glass-subtle rounded-lg p-4 flex items-center space-x-4">
-                <Phone className="w-5 h-5 text-accent" />
-                <div>
-                  <p className="font-medium">Call us</p>
-                  <p className="text-sm text-muted-foreground">+91 98765 43210</p>
-                </div>
+            <div className="glass-subtle rounded-lg p-4 flex items-center space-x-4">
+              <Phone className="w-5 h-5 text-accent" />
+              <div>
+                <p className="font-medium">Call us</p>
+                <p className="text-sm text-muted-foreground">+91 98765 43210</p>
               </div>
+            </div>
 
-              <div className="glass-subtle rounded-lg p-4 flex items-center space-x-4">
-                <Mail className="w-5 h-5 text-primary" />
-                <div>
-                  <p className="font-medium">Email us</p>
-                  <p className="text-sm text-muted-foreground">hello@guiitarcouncil.com</p>
-                </div>
+            <div className="glass-subtle rounded-lg p-4 flex items-center space-x-4">
+              <Mail className="w-5 h-5 text-primary" />
+              <div>
+                <p className="font-medium">Email us</p>
+                <p className="text-sm text-muted-foreground">hello@guiitarcouncil.com</p>
               </div>
+            </div>
 
-              <div className="glass-subtle rounded-lg p-4 flex items-center space-x-4">
-                <Clock className="w-5 h-5 text-accent" />
-                <div>
-                  <p className="font-medium">Office hours</p>
-                  <p className="text-sm text-muted-foreground">Mon-Fri: 9 AM - 6 PM IST</p>
-                </div>
+            <div className="glass-subtle rounded-lg p-4 flex items-center space-x-4">
+              <Clock className="w-5 h-5 text-accent" />
+              <div>
+                <p className="font-medium">Office hours</p>
+                <p className="text-sm text-muted-foreground">Mon-Fri: 9 AM - 6 PM IST</p>
               </div>
             </div>
           </div>
