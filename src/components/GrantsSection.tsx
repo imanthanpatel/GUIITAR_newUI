@@ -32,10 +32,11 @@ const GrantsSection = () => {
     {
       title: 'Nodal Grant',
       amount: '30Lac',
-      description: 'Fuel your startup’s first spark into a blazing innovation',
+      description: 'Fuel your startup\'s first spark into a blazing innovation',
       color: 'primary',
       applicants: 847,
       success: '12%',
+      link: '/grants/nodal',
     },
     {
       title: 'Ipr Grant',
@@ -44,6 +45,7 @@ const GrantsSection = () => {
       color: 'accent',
       applicants: 342,
       success: '8%',
+      link: '/grants/ipr',
     },
     {
       title: 'SSIP Grant',
@@ -52,6 +54,7 @@ const GrantsSection = () => {
       color: 'primary',
       applicants: 123,
       success: '3%',
+      link: '/grants/ssip',
     },
   ];
 
@@ -132,7 +135,7 @@ const GrantsSection = () => {
             <span className="text-accent">Grants</span> That Change Lives
           </h2>
           <p className="text-subtitle max-w-3xl mx-auto">
-            Not just funding—we’re offering you the keys to transformation. Each grant is a gateway to turning impossible
+            Not just funding—we're offering you the keys to transformation. Each grant is a gateway to turning impossible
             into inevitable.
           </p>
         </div>
@@ -142,7 +145,7 @@ const GrantsSection = () => {
           {grants.map((grant, index) => (
             <div
               key={grant.title}
-              className={`group relative transform transition-all duration-700 hover-lift ${
+              className={`group relative transform transition-all duration-700 hover-lift cursor-pointer ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
               }`}
               style={{
@@ -151,6 +154,7 @@ const GrantsSection = () => {
               }}
               onMouseEnter={() => setHoveredGrant(index)}
               onMouseLeave={() => setHoveredGrant(null)}
+              onClick={() => navigate(grant.link)}
             >
               {/* Main Grant Card */}
               <div

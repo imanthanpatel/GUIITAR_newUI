@@ -7,6 +7,9 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Events from "./pages/Events";
 import Grants from "./pages/Grants";
+import NodalGrant from "./pages/NodalGrant";
+import IprGrant from "./pages/IprGrant";
+import SSIPGrant from "./pages/SSIPGrant";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import Resources from "./pages/Resources";
@@ -32,6 +35,9 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/events" element={<Events />} />
           <Route path="/grants" element={<Grants />} />
+          <Route path="/grants/nodal" element={<NodalGrant />} />
+          <Route path="/grants/ipr" element={<IprGrant />} />
+          <Route path="/grants/ssip" element={<SSIPGrant />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resources" element={<Resources />} />
