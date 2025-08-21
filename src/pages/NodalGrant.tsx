@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -6,6 +6,10 @@ import { Calendar, DollarSign, Users, ArrowRight, CheckCircle, Clock, Award, Tar
 
 const NodalGrant = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleApplyNow = () => {
     navigate('/signin');
